@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A464F71B-2FEC-499C-A89A-DBBAF781DF48}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ClientPlugins</RootNamespace>
+    <AssemblyName>ClientPlugins</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <PackageReference Include="MilestoneSystems.VideoOS.Platform" Version="*" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\ClientPluginsAddUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\ClientPluginsAddUserControl.Designer.cs">
+      <DependentUpon>ClientPluginsAddUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ClientPluginsHelpPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\ClientPluginsHelpPage.Designer.cs">
+      <DependentUpon>ClientPluginsHelpPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ClientPluginsItemManager.cs" />
+    <Compile Include="Admin\ClientPluginsTabPlugin.cs" />
+    <Compile Include="Admin\ClientPluginsTabUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\ClientPluginsTabUserControl.Designer.cs">
+      <DependentUpon>ClientPluginsTabUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ClientPluginsToolsOptionDialogPlugin.cs" />
+    <Compile Include="Admin\ClientPluginsToolsOptionDialogUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\ClientPluginsToolsOptionDialogUserControl.designer.cs">
+      <DependentUpon>ClientPluginsToolsOptionDialogUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ClientPluginsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\ClientPluginsUserControl.Designer.cs">
+      <DependentUpon>ClientPluginsUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Background\ClientPluginsBackgroundPlugin.cs" />
+    <Compile Include="Client\ClientPluginsPropertiesWpfUserControl.xaml.cs">
+      <DependentUpon>ClientPluginsPropertiesWpfUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ClientPluginsSettingsPanelPlugin.cs" />
+    <Compile Include="Client\ClientPluginsSettingsPanelControl.xaml.cs">
+      <DependentUpon>ClientPluginsSettingsPanelControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ClientPluginsSidePanelPlugin.cs" />
+    <Compile Include="Client\ClientPluginsSidePanelWpfUserControl.xaml.cs">
+      <DependentUpon>ClientPluginsSidePanelWpfUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ClientPluginsViewItemPlugin.cs" />
+    <Compile Include="Client\ClientPluginsViewItemManager.cs" />
+    <Compile Include="Client\ClientPluginsViewItemToolbarPlugin.cs" />
+    <Compile Include="Client\ClientPluginsViewItemWpfUserControl.xaml.cs">
+      <DependentUpon>ClientPluginsViewItemWpfUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ClientPluginsViewLayout.cs" />
+    <Compile Include="Client\ClientPluginsWorkSpacePlugin.cs" />
+    <Compile Include="Client\ClientPluginsWorkSpaceToolbarPlugin.cs" />
+    <Compile Include="Client\ClientPluginsWorkSpaceViewItemManager.cs" />
+    <Compile Include="Client\ClientPluginsWorkSpaceViewItemPlugin.cs" />
+    <Compile Include="Client\ClientPluginsWorkSpaceViewItemWpfUserControl.xaml.cs">
+      <DependentUpon>ClientPluginsWorkSpaceViewItemWpfUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ClientPluginsDefinition.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Admin\ClientPluginsAddUserControl.resx">
+      <DependentUpon>ClientPluginsAddUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Admin\ClientPluginsTabUserControl.resx">
+      <DependentUpon>ClientPluginsTabUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\ClientPluginsToolsOptionDialogUserControl.resx">
+      <DependentUpon>ClientPluginsToolsOptionDialogUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Server.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Admin\ClientPluginsHelpPage.resx">
+      <DependentUpon>ClientPluginsHelpPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\ClientPluginsUserControl.resx">
+      <DependentUpon>ClientPluginsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="plugin.def">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Resources\DummyItem.bmp" />
+    <EmbeddedResource Include="Resources\WorkSpaceIcon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Client\ClientPluginsPropertiesWpfUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Client\ClientPluginsSettingsPanelControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Client\ClientPluginsSidePanelWpfUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Client\ClientPluginsViewItemWpfUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Client\ClientPluginsWorkSpaceViewItemWpfUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
