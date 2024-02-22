@@ -1,11 +1,12 @@
 using System;
 using System.Windows;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using VideoOS.Platform;
 using VideoOS.Platform.Client;
 using VideoOS.Platform.Messaging;
+
+
 
 namespace ClientPlugins.Client
 {
@@ -34,6 +35,7 @@ namespace ClientPlugins.Client
         private object _colorChange;
 
 
+
         #endregion
 
         #region Component constructors + dispose
@@ -52,7 +54,7 @@ namespace ClientPlugins.Client
 
         private static Color GetWindowsMediaColor(System.Drawing.Color inColor)
         {
-            return Color.FromArgb(inColor.A, inColor.R, inColor.G, inColor.B);
+            return System.Windows.Media.Color.FromArgb(inColor.A, inColor.R, inColor.G, inColor.B);
         }
 
         private void SetHeaderColors()
@@ -71,7 +73,6 @@ namespace ClientPlugins.Client
             MessageCommunicationManager.Start(EnvironmentManager.Instance.MasterSite.ServerId);
             _messageCommunication = MessageCommunicationManager.Get(EnvironmentManager.Instance.MasterSite.ServerId);
             _colorChange = _messageCommunication.RegisterCommunicationFilter(ColorChangeHandler, new CommunicationIdFilter(ClientPluginsDefinition.ColorChange));
-
         }
 
         private void RemoveApplicationEventListeners()
@@ -88,20 +89,19 @@ namespace ClientPlugins.Client
 
         private object ColorChangeHandler(VideoOS.Platform.Messaging.Message message, FQID dest, FQID source)
         {
-            if (InvokeRequired)
-            if (true)
+            if (!Dispatcher.CheckAccess())
             {
-                BeginInvoke(new MessageReceiver(ColorChangeHandler), message, dest, source);
-              
+                Dispatcher.Invoke(new MessageReceiver(ColorChangeHandler), message, dest, source);
             }
             else
             {
                 try
                 {
-                    Color colordata = (Color)message.Data;
-                    if (colordata != null)
+                    if (message.Data != null)
                     {
-                        panelMain.Background = new SolidColorBrush(colordata);
+                        Color color = (Color)ColorConverter.ConvertFromString((string)message.Data);
+                        SolidColorBrush brush = new SolidColorBrush(color);
+                        panelMain.Background = brush;
                     }
                 }
                 catch (Exception e)
@@ -257,14 +257,30 @@ namespace ClientPlugins.Client
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             VideoOS.Platform.Messaging.Message colorChange = new VideoOS.Platform.Messaging.Message(ClientPluginsDefinition.ColorChange);
-            colorChange.Data = Colors.Red;
+            //colorChange.Data = new SolidColorBrush(Colors.Red);
+            /*
+             * 위의 튜토리얼 코드로 실행하면  Message 'MESSAGESTRING' with prohibited data class type 'CLASS IDENTIFYING TEXT' discarded.오류남
+            아래 아티클에서 상세 내용 확인 가능
+
+            How to handle Event Server error 'CommunicationService.TransmitMessage' (troubleshooting)
+            https://developer.milestonesys.com/s/article/how-to-handle-EVS-error-Message-x-with-prohibited-data-class-type
+            */
+            colorChange.Data = "RED";
             _messageCommunication.TransmitMessage(colorChange, null, null, null);
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             VideoOS.Platform.Messaging.Message colorChange = new VideoOS.Platform.Messaging.Message(ClientPluginsDefinition.ColorChange);
-            colorChange.Data = Colors.Blue ;
+            // colorChange.Data = (object) Colors.AliceBlue;
+            /*
+             * 위의 튜토리얼 코드로 실행하면  Message 'MESSAGESTRING' with prohibited data class type 'CLASS IDENTIFYING TEXT' discarded.오류남
+            아래 아티클에서 상세 내용 확인 가능
+
+            How to handle Event Server error 'CommunicationService.TransmitMessage' (troubleshooting)
+            https://developer.milestonesys.com/s/article/how-to-handle-EVS-error-Message-x-with-prohibited-data-class-type
+            */
+            colorChange.Data = "BLUE";
             _messageCommunication.TransmitMessage(colorChange, null, null, null);
         }
     }
